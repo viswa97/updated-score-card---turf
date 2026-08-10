@@ -20,13 +20,13 @@ body {
 }
 
 .container {
-  width: min(1100px, 94%);
+  width: min(1100px, 95%);
   margin: 20px auto 50px;
 }
 
 h1 {
   text-align: center;
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 }
 
 h2,
@@ -40,18 +40,34 @@ h4 {
   border-radius: 14px;
   padding: 18px;
   margin-bottom: 18px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, .25);
+  box-shadow: 0 6px 25px rgba(0,0,0,.22);
+}
+
+.hidden {
+  display: none !important;
 }
 
 /* =========================
    SETUP
 ========================= */
 
-.setup-grid,
+.setup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 .squad-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.squad-box {
+  background: #223047;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 label {
@@ -64,21 +80,15 @@ input {
   padding: 12px;
   margin-top: 7px;
   border: 1px solid #475569;
+  border-radius: 8px;
   background: #0f172a;
   color: #fff;
-  border-radius: 8px;
   font-size: 16px;
   outline: none;
 }
 
 input:focus {
   border-color: #22c55e;
-}
-
-.squad-box {
-  background: #223047;
-  padding: 16px;
-  border-radius: 10px;
 }
 
 .player-input {
@@ -88,8 +98,14 @@ input:focus {
 .setup-buttons {
   display: flex;
   gap: 10px;
+  margin-top: 16px;
   flex-wrap: wrap;
-  margin-top: 18px;
+}
+
+.setup-note {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 /* =========================
@@ -107,8 +123,14 @@ button {
 }
 
 button:hover {
-  transform: translateY(-1px);
   opacity: .92;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .4;
+  transform: none;
 }
 
 .btn-start {
@@ -127,14 +149,26 @@ button:hover {
 }
 
 .btn-run {
+  min-height: 55px;
   background: #2563eb;
   color: #fff;
-  min-height: 54px;
   font-size: 18px;
 }
 
 /* =========================
-   SCORE HEADER
+   TOP ACTIONS
+========================= */
+
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   TOTAL SCORE
 ========================= */
 
 .score-header {
@@ -145,10 +179,10 @@ button:hover {
 }
 
 .team-title {
+  color: #cbd5e1;
   font-size: 20px;
   font-weight: 700;
-  color: #cbd5e1;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .score {
@@ -158,8 +192,8 @@ button:hover {
 }
 
 .overs {
-  color: #cbd5e1;
   margin-top: 8px;
+  color: #cbd5e1;
   font-size: 17px;
 }
 
@@ -184,37 +218,38 @@ button:hover {
 ========================= */
 
 .section-title {
-  font-size: 18px;
-  margin-bottom: 12px;
   color: #cbd5e1;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
 }
 
 .run-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  gap: 9px;
 }
 
 .action-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 9px;
   margin-top: 12px;
 }
 
 .action-grid button {
-  min-height: 50px;
+  min-height: 52px;
 }
 
 /* =========================
-   BATTER + BOWLER CARD
+   LIVE BATTER/BOWLER
 ========================= */
 
 .live-head {
   background: #26364f;
   padding: 11px 13px;
-  margin-top: 12px;
   border-radius: 8px;
+  margin-top: 12px;
   font-weight: 800;
   color: #e2e8f0;
 }
@@ -228,18 +263,18 @@ button:hover {
   border-bottom: 1px solid #334155;
 }
 
-.live-row:last-child {
-  border-bottom: 0;
-}
-
-/* Larger batter/bowler names */
-.player-live-name {
+/* Larger names as requested */
+#strikerName,
+#nonStrikerName,
+#bowlerName {
   font-size: 20px;
   font-weight: 700;
 }
 
-.player-live-score {
-  font-size: 19px;
+#strikerScore,
+#nonStrikerScore,
+#bowlerFigures {
+  font-size: 18px;
   font-weight: 800;
   white-space: nowrap;
 }
@@ -251,7 +286,7 @@ button:hover {
 .single-batter-notice {
   background: #f59e0b;
   color: #111827;
-  padding: 12px;
+  padding: 11px;
   border-radius: 8px;
   margin-top: 12px;
   font-weight: 800;
@@ -278,20 +313,20 @@ button:hover {
 
 .extra-item b {
   display: block;
-  font-size: 23px;
   color: #fff;
+  font-size: 23px;
   margin-top: 5px;
 }
 
 /* =========================
-   FULL SCORECARD
+   SCORECARD
 ========================= */
 
 .scorecard-player {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: center;
   gap: 10px;
+  align-items: center;
   padding: 11px 6px;
   border-bottom: 1px solid #334155;
 }
@@ -301,9 +336,9 @@ button:hover {
 }
 
 .player-status {
-  margin-left: 7px;
   font-size: 12px;
   font-weight: 700;
+  margin-left: 6px;
 }
 
 .out {
@@ -314,19 +349,27 @@ button:hover {
   color: #4ade80;
 }
 
+.scorecard-summary {
+  background: #243249;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+}
+
 /* =========================
-   MODALS
+   MODAL
 ========================= */
 
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, .72);
+  z-index: 1000;
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
   padding: 15px;
+  background: rgba(0,0,0,.72);
 }
 
 .modal.show {
@@ -366,6 +409,16 @@ button:hover {
   background: #2563eb;
 }
 
+.warning {
+  background: #78350f;
+  color: #fef3c7;
+  padding: 11px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -373,53 +426,22 @@ button:hover {
   margin-top: 20px;
 }
 
-.warning {
-  background: #78350f;
-  color: #fef3c7;
-  padding: 11px;
-  border-radius: 8px;
-  margin-top: 15px;
-  line-height: 1.45;
-  font-size: 14px;
-}
-
 .selection-list {
   display: grid;
   gap: 9px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .selection-btn {
   width: 100%;
   text-align: left;
   background: #26364f;
-  color: white;
-  padding: 13px 15px;
-}
-
-.selection-btn:hover {
-  background: #334a6b;
+  color: #fff;
 }
 
 .selection-btn.current {
   background: #166534;
   border: 1px solid #22c55e;
-}
-
-/* =========================
-   UTILITIES
-========================= */
-
-.hidden {
-  display: none !important;
-}
-
-.top-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
 }
 
 .small-info {
@@ -428,10 +450,10 @@ button:hover {
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media (max-width: 700px) {
+@media(max-width:700px) {
 
   .setup-grid,
   .squad-grid {
@@ -454,16 +476,20 @@ button:hover {
     font-size: 38px;
   }
 
-  .player-live-name {
+  #strikerName,
+  #nonStrikerName,
+  #bowlerName {
     font-size: 18px;
   }
 
-  .player-live-score {
-    font-size: 17px;
+  #strikerScore,
+  #nonStrikerScore,
+  #bowlerFigures {
+    font-size: 16px;
   }
 }
 
-@media (max-width: 430px) {
+@media(max-width:430px) {
 
   .container {
     width: 96%;
@@ -474,16 +500,8 @@ button:hover {
   }
 
   .score-header {
-    align-items: flex-start;
     flex-direction: column;
-  }
-
-  .run-grid {
-    gap: 7px;
-  }
-
-  .btn-run {
-    padding: 10px 5px;
+    align-items: flex-start;
   }
 
   .action-grid {
@@ -493,7 +511,6 @@ button:hover {
 </style>
 </head>
 
-
 <body>
 
 <div class="container">
@@ -501,9 +518,9 @@ button:hover {
 <h1>🏏 Turf Cricket Scorer</h1>
 
 
-<!-- =========================
-     SETUP
-========================= -->
+<!-- ==================================================
+     MATCH SETUP
+================================================== -->
 
 <div class="card" id="setupCard">
 
@@ -522,6 +539,7 @@ button:hover {
         placeholder="Number of Overs"
       >
     </label>
+
 
     <label>
       Players per Team
@@ -550,24 +568,38 @@ button:hover {
 
 
   <div
-    class="squad-grid"
     id="squadSection"
-    style="display:none; margin-top:18px;">
+    class="squad-grid"
+    style="display:none;">
 
     <div class="squad-box">
 
-      <h4>Team A Players</h4>
+      <h4 id="teamAPlayersTitle">
+        Team A Players
+      </h4>
 
       <div id="teamAInputs"></div>
+
+      <div class="setup-note">
+        Leave blank to automatically use
+        Player 1, Player 2, etc.
+      </div>
 
     </div>
 
 
     <div class="squad-box">
 
-      <h4>Team B Players</h4>
+      <h4 id="teamBPlayersTitle">
+        Team B Players
+      </h4>
 
       <div id="teamBInputs"></div>
+
+      <div class="setup-note">
+        Leave blank to automatically use
+        Player 1, Player 2, etc.
+      </div>
 
     </div>
 
@@ -575,8 +607,8 @@ button:hover {
 
 
   <div
-    class="setup-buttons"
     id="startMatchArea"
+    class="setup-buttons"
     style="display:none;">
 
     <button
@@ -590,16 +622,12 @@ button:hover {
 </div>
 
 
-<!-- =========================
+<!-- ==================================================
      MATCH AREA
-========================= -->
+================================================== -->
 
-<div
-  id="matchArea"
-  class="hidden">
+<div id="matchArea" class="hidden">
 
-
-  <!-- TOP ACTIONS -->
 
   <div class="top-actions">
 
@@ -618,9 +646,9 @@ button:hover {
   </div>
 
 
-  <!-- =========================
-       1. TOTAL SCORE FIRST
-  ========================= -->
+  <!-- ==================================================
+       1. TOTAL SCORECARD
+  ================================================== -->
 
   <div class="card">
 
@@ -629,17 +657,15 @@ button:hover {
       <div>
 
         <div
-          class="team-title"
-          id="battingTeamName">
+          id="battingTeamName"
+          class="team-title">
           Team A
         </div>
 
         <div class="score">
 
           <span id="teamScore">0</span>
-
           /
-
           <span id="teamWickets">0</span>
 
         </div>
@@ -647,7 +673,9 @@ button:hover {
         <div class="overs">
 
           Overs:
-          <span id="oversDisplay">0.0</span>
+          <span id="oversDisplay">
+            0.0
+          </span>
 
         </div>
 
@@ -671,9 +699,9 @@ button:hover {
   </div>
 
 
-  <!-- =========================
+  <!-- ==================================================
        2. SCORE ENTRY
-  ========================= -->
+  ================================================== -->
 
   <div class="card">
 
@@ -687,7 +715,7 @@ button:hover {
       <button
         class="btn-run"
         onclick="scoreRuns(0)">
-        0
+        Dot
       </button>
 
       <button
@@ -748,14 +776,14 @@ button:hover {
   </div>
 
 
-  <!-- =========================
-       3. BATTER + BOWLER
-  ========================= -->
+  <!-- ==================================================
+       3. BATTER + BOWLER SCORECARD
+  ================================================== -->
 
   <div class="card">
 
     <div class="section-title">
-      Batters & Bowler
+      Batter & Bowler Scorecard
     </div>
 
 
@@ -768,13 +796,11 @@ button:hover {
 
       <span
         id="strikerName"
-        class="player-live-name striker">
+        class="striker">
         Striker
       </span>
 
-      <b
-        id="strikerScore"
-        class="player-live-score">
+      <b id="strikerScore">
         0 (0)
       </b>
 
@@ -783,15 +809,11 @@ button:hover {
 
     <div class="live-row">
 
-      <span
-        id="nonStrikerName"
-        class="player-live-name">
+      <span id="nonStrikerName">
         Non-Striker
       </span>
 
-      <b
-        id="nonStrikerScore"
-        class="player-live-score">
+      <b id="nonStrikerScore">
         0 (0)
       </b>
 
@@ -803,7 +825,8 @@ button:hover {
       class="single-batter-notice"
       style="display:none;">
 
-      🏏 Last Wicket — Single Batter Mode
+      🏏 Last Wicket —
+      Single Batter Can Continue
 
     </div>
 
@@ -815,36 +838,28 @@ button:hover {
 
     <div class="live-row">
 
-      <span
-        id="bowlerName"
-        class="player-live-name">
+      <span id="bowlerName">
         Bowler
       </span>
 
-      <b
-        id="bowlerFigures"
-        class="player-live-score">
+      <b id="bowlerFigures">
         0.0 - 0 - 0 - 0
       </b>
 
     </div>
 
 
-    <div
-      class="small-info"
-      style="margin-top:10px;">
-
+    <div class="small-info">
       Bowler figures:
       Overs - Runs - Maidens - Wickets
-
     </div>
 
   </div>
 
 
-  <!-- =========================
-       4. FULL TEAM LIVE SCORECARD
-  ========================= -->
+  <!-- ==================================================
+       4. WHOLE TEAM LIVE SCORECARD
+  ================================================== -->
 
   <div class="card">
 
@@ -857,9 +872,9 @@ button:hover {
   </div>
 
 
-  <!-- =========================
+  <!-- ==================================================
        EXTRAS
-  ========================= -->
+  ================================================== -->
 
   <div class="card">
 
@@ -874,15 +889,18 @@ button:hover {
         <b id="extraNoBalls">0</b>
       </div>
 
+
       <div class="extra-item">
         Wides
         <b id="extraWides">0</b>
       </div>
 
+
       <div class="extra-item">
         Byes
         <b id="extraByes">0</b>
       </div>
+
 
       <div class="extra-item">
         Total
@@ -893,14 +911,11 @@ button:hover {
 
   </div>
 
-
-</div>
-
 </div>
 
 
 <!-- ==================================================
-     RUN OUT / WICKET MODAL
+     RUN OUT MODAL
 ================================================== -->
 
 <div
@@ -926,6 +941,7 @@ button:hover {
         Striker
       </button>
 
+
       <button
         class="option-btn"
         data-dismissed="nonstriker"
@@ -950,12 +966,14 @@ button:hover {
         0
       </button>
 
+
       <button
         class="option-btn"
         data-runs="1"
         onclick="selectRunOutRuns(1)">
         1
       </button>
+
 
       <button
         class="option-btn"
@@ -981,6 +999,7 @@ button:hover {
         Normal Ball
       </button>
 
+
       <button
         class="option-btn"
         data-balltype="noball"
@@ -993,8 +1012,8 @@ button:hover {
 
     <div class="warning">
 
-      No Ball adds +1 penalty run and does not
-      count as a legal delivery.
+      No Ball adds +1 penalty run and does
+      not count as a legal delivery.
 
     </div>
 
@@ -1006,6 +1025,7 @@ button:hover {
         onclick="closeRunOutModal()">
         Cancel
       </button>
+
 
       <button
         class="btn-start"
@@ -1047,12 +1067,14 @@ button:hover {
         0
       </button>
 
+
       <button
         class="option-btn"
         data-nbruns="1"
         onclick="selectNoBallRuns(1)">
         1
       </button>
+
 
       <button
         class="option-btn"
@@ -1061,6 +1083,7 @@ button:hover {
         2
       </button>
 
+
       <button
         class="option-btn"
         data-nbruns="3"
@@ -1068,12 +1091,14 @@ button:hover {
         3
       </button>
 
+
       <button
         class="option-btn"
         data-nbruns="4"
         onclick="selectNoBallRuns(4)">
         4
       </button>
+
 
       <button
         class="option-btn"
@@ -1101,6 +1126,7 @@ button:hover {
         Cancel
       </button>
 
+
       <button
         class="btn-start"
         onclick="confirmNoBall()">
@@ -1124,7 +1150,7 @@ button:hover {
 
   <div class="modal-box">
 
-    <h3>↔ Wide Ball</h3>
+    <h3>↔ Wide</h3>
 
 
     <div class="modal-label">
@@ -1141,12 +1167,14 @@ button:hover {
         1
       </button>
 
+
       <button
         class="option-btn"
         data-wideruns="2"
         onclick="selectWideRuns(2)">
         2
       </button>
+
 
       <button
         class="option-btn"
@@ -1155,12 +1183,14 @@ button:hover {
         3
       </button>
 
+
       <button
         class="option-btn"
         data-wideruns="4"
         onclick="selectWideRuns(4)">
         4
       </button>
+
 
       <button
         class="option-btn"
@@ -1174,8 +1204,8 @@ button:hover {
 
     <div class="warning">
 
-      Wide runs are added to the team total and do
-      not count as a legal delivery.
+      Wide runs are added to the team total and
+      do not count as a legal delivery.
 
     </div>
 
@@ -1187,6 +1217,7 @@ button:hover {
         onclick="closeWideModal()">
         Cancel
       </button>
+
 
       <button
         class="btn-start"
@@ -1286,7 +1317,8 @@ button:hover {
     <h3>🔄 New Match</h3>
 
     <div class="warning">
-      Start a new match? The current match will be cleared.
+      Start a new match?
+      The current match will be cleared.
     </div>
 
     <div class="modal-actions">
@@ -1313,7 +1345,7 @@ button:hover {
 <script>
 
 /* ==================================================
-   GLOBAL STATE
+   GLOBAL VARIABLES
 ================================================== */
 
 let match = null;
@@ -1323,33 +1355,30 @@ let selectedRunOutRuns = 0;
 let selectedRunOutBallType = "normal";
 
 let selectedNoBallRuns = 0;
-
 let selectedWideRuns = 1;
 
 
 /* ==================================================
-   SETUP
+   GENERATE PLAYERS
 ================================================== */
 
 function generateSquads() {
 
   const overs =
-    Number(document.getElementById("oversInput").value);
+    Number(
+      document.getElementById("oversInput").value
+    );
 
   const players =
-    Number(document.getElementById("playersInput").value);
+    Number(
+      document.getElementById("playersInput").value
+    );
 
 
   if (
     !overs ||
     overs < 1 ||
-    overs > 50
-  ) {
-    return;
-  }
-
-
-  if (
+    overs > 50 ||
     !players ||
     players < 2 ||
     players > 11
@@ -1372,14 +1401,29 @@ function generateSquads() {
   );
 
 
-  document.getElementById("squadSection")
-    .style.display = "grid";
+  document.getElementById(
+    "squadSection"
+  ).style.display = "grid";
 
 
-  document.getElementById("startMatchArea")
-    .style.display = "flex";
+  document.getElementById(
+    "startMatchArea"
+  ).style.display = "flex";
 }
 
+
+/*
+  IMPORTANT:
+  Inputs are EMPTY.
+
+  User can directly type a custom name.
+
+  If left empty, startMatch() will use:
+  Player 1
+  Player 2
+  Player 3
+  ...
+*/
 
 function createPlayerInputs(
   containerId,
@@ -1402,16 +1446,19 @@ function createPlayerInputs(
     const input =
       document.createElement("input");
 
+
     input.type = "text";
 
     input.className =
       "player-input";
 
+
     input.placeholder =
       `${teamName} Player ${i}`;
 
-    input.value =
-      `${teamName} Player ${i}`;
+
+    input.value = "";
+
 
     container.appendChild(input);
   }
@@ -1425,34 +1472,31 @@ function createPlayerInputs(
 function startMatch() {
 
   const overs =
-    Number(document.getElementById("oversInput").value);
+    Number(
+      document.getElementById("oversInput").value
+    );
+
 
   const players =
-    Number(document.getElementById("playersInput").value);
+    Number(
+      document.getElementById("playersInput").value
+    );
 
 
   const teamAPlayers =
-    [...document.querySelectorAll(
-      "#teamAInputs input"
-    )].map(input =>
-      input.value.trim()
+    getPlayerNames(
+      "#teamAInputs input",
+      "Team A",
+      players
     );
 
 
   const teamBPlayers =
-    [...document.querySelectorAll(
-      "#teamBInputs input"
-    )].map(input =>
-      input.value.trim()
+    getPlayerNames(
+      "#teamBInputs input",
+      "Team B",
+      players
     );
-
-
-  if (
-    teamAPlayers.some(name => !name) ||
-    teamBPlayers.some(name => !name)
-  ) {
-    return;
-  }
 
 
   match = {
@@ -1469,39 +1513,15 @@ function startMatch() {
 
     teams: [
 
-      {
-        name: "Team A",
+      createTeam(
+        "Team A",
+        teamAPlayers
+      ),
 
-        players:
-          teamAPlayers.map(createPlayer),
-
-        score: 0,
-
-        wickets: 0,
-
-        extras: {
-          noBalls: 0,
-          wides: 0,
-          byes: 0
-        }
-      },
-
-      {
-        name: "Team B",
-
-        players:
-          teamBPlayers.map(createPlayer),
-
-        score: 0,
-
-        wickets: 0,
-
-        extras: {
-          noBalls: 0,
-          wides: 0,
-          byes: 0
-        }
-      }
+      createTeam(
+        "Team B",
+        teamBPlayers
+      )
 
     ],
 
@@ -1515,22 +1535,82 @@ function startMatch() {
 
     matchOver: false,
 
-    pendingNewBatter: false
+    waitingForBatter: false
   };
 
 
   setupFirstInnings();
 
 
-  document.getElementById("setupCard")
+  document
+    .getElementById("setupCard")
     .classList.add("hidden");
 
 
-  document.getElementById("matchArea")
+  document
+    .getElementById("matchArea")
     .classList.remove("hidden");
 
 
   updateUI();
+}
+
+
+/*
+  Empty name => Player 1 / Player 2...
+*/
+
+function getPlayerNames(
+  selector,
+  teamName,
+  count
+) {
+
+  const inputs =
+    [...document.querySelectorAll(selector)];
+
+
+  return inputs.map(
+    (input, index) => {
+
+      const typed =
+        input.value.trim();
+
+
+      return typed ||
+        `Player ${index + 1}`;
+    }
+  );
+}
+
+
+function createTeam(
+  name,
+  playerNames
+) {
+
+  return {
+
+    name,
+
+    players:
+      playerNames.map(
+        createPlayer
+      ),
+
+    score: 0,
+
+    wickets: 0,
+
+    extras: {
+
+      noBalls: 0,
+
+      wides: 0,
+
+      byes: 0
+    }
+  };
 }
 
 
@@ -1544,13 +1624,15 @@ function createPlayer(name) {
 
     balls: 0,
 
+    fours: 0,
+
+    sixes: 0,
+
     out: false,
 
     active: false,
 
-    fours: 0,
-
-    sixes: 0,
+    dismissal: "",
 
     bowlerBalls: 0,
 
@@ -1562,7 +1644,38 @@ function createPlayer(name) {
 
 
 /* ==================================================
-   TEAM HELPERS
+   FIRST INNINGS
+================================================== */
+
+function setupFirstInnings() {
+
+  const batting =
+    getBattingTeam();
+
+
+  match.striker =
+    batting.players[0];
+
+
+  match.nonStriker =
+    batting.players[1];
+
+
+  match.striker.active = true;
+
+  match.nonStriker.active = true;
+
+
+  match.bowler =
+    getBowlingTeam().players[0];
+
+
+  match.legalBalls = 0;
+}
+
+
+/* ==================================================
+   HELPERS
 ================================================== */
 
 function getBattingTeam() {
@@ -1581,42 +1694,6 @@ function getBowlingTeam() {
 }
 
 
-/* ==================================================
-   FIRST INNINGS
-================================================== */
-
-function setupFirstInnings() {
-
-  const batting =
-    getBattingTeam();
-
-
-  match.striker =
-    batting.players[0];
-
-  match.nonStriker =
-    batting.players[1];
-
-
-  match.striker.active = true;
-
-  match.nonStriker.active = true;
-
-
-  match.bowler =
-    batting === match.teams[0]
-      ? match.teams[1].players[0]
-      : match.teams[0].players[0];
-
-
-  match.legalBalls = 0;
-}
-
-
-/* ==================================================
-   SINGLE BATTER
-================================================== */
-
 function isSingleBatterMode() {
 
   const batting =
@@ -1633,36 +1710,18 @@ function isSingleBatterMode() {
 }
 
 
-function enterSingleBatterMode() {
+function getRemainingPlayers() {
 
-  const batting =
-    getBattingTeam();
-
-
-  const remaining =
-    batting.players.filter(
+  return getBattingTeam()
+    .players
+    .filter(
       player => !player.out
     );
-
-
-  if (remaining.length !== 1) {
-    return;
-  }
-
-
-  match.striker =
-    remaining[0];
-
-  match.nonStriker =
-    null;
-
-
-  remaining[0].active = true;
 }
 
 
 /* ==================================================
-   NORMAL RUNS
+   NORMAL BALL
 ================================================== */
 
 function scoreRuns(runs) {
@@ -1670,7 +1729,8 @@ function scoreRuns(runs) {
   if (
     !match ||
     match.matchOver ||
-    !match.striker
+    !match.striker ||
+    match.waitingForBatter
   ) {
     return;
   }
@@ -1702,20 +1762,17 @@ function scoreRuns(runs) {
   }
 
 
-  if (match.bowler) {
+  addBowlerRuns(runs);
 
-    match.bowler.bowlerRuns =
-      (match.bowler.bowlerRuns || 0)
-      + runs;
-
-    match.bowler.bowlerBalls =
-      (match.bowler.bowlerBalls || 0)
-      + 1;
-  }
+  addBowlerLegalBall();
 
 
-  match.legalBalls++;
+  /*
+    Strike changes on odd runs.
 
+    In single-batter mode there is
+    nobody to swap with.
+  */
 
   if (
     runs % 2 === 1 &&
@@ -1726,62 +1783,115 @@ function scoreRuns(runs) {
   }
 
 
-  checkOver();
-
+  finishLegalBall();
 
   checkTarget();
-
 
   updateUI();
 }
 
 
 /* ==================================================
-   BYE
+   BOWLER HELPERS
 ================================================== */
 
-function scoreBye() {
+function addBowlerRuns(runs) {
 
-  if (
-    !match ||
-    match.matchOver
-  ) {
+  if (!match.bowler) {
     return;
   }
 
 
-  const batting =
-    getBattingTeam();
+  match.bowler.bowlerRuns =
+    (match.bowler.bowlerRuns || 0)
+    + runs;
+}
 
 
-  batting.score++;
+function addBowlerLegalBall() {
 
-  batting.extras.byes++;
-
-
-  if (match.bowler) {
-
-    match.bowler.bowlerBalls =
-      (match.bowler.bowlerBalls || 0)
-      + 1;
+  if (!match.bowler) {
+    return;
   }
 
+
+  match.bowler.bowlerBalls =
+    (match.bowler.bowlerBalls || 0)
+    + 1;
+}
+
+
+/* ==================================================
+   LEGAL BALL / OVER
+================================================== */
+
+function finishLegalBall() {
 
   match.legalBalls++;
 
 
   if (
-    !isSingleBatterMode()
+    match.legalBalls >=
+    match.maxOvers * 6
   ) {
-    swapBatters();
+
+    endInnings();
+
+    return;
   }
 
 
-  checkOver();
+  if (
+    match.legalBalls % 6 === 0
+  ) {
 
-  checkTarget();
+    /*
+      At the end of an over the
+      batters change ends.
+    */
 
-  updateUI();
+    if (
+      !isSingleBatterMode()
+    ) {
+
+      swapBatters();
+    }
+
+
+    /*
+      Proper in-page bowler selection.
+      No alert/prompt.
+    */
+
+    openBowlerModal();
+  }
+}
+
+
+/* ==================================================
+   STRIKE
+================================================== */
+
+function swapBatters() {
+
+  if (
+    !match.striker ||
+    !match.nonStriker
+  ) {
+    return;
+  }
+
+
+  const temp =
+    match.striker;
+
+
+  match.striker =
+    match.nonStriker;
+
+
+  match.nonStriker =
+    temp;
 }
 
 
@@ -1791,12 +1901,19 @@ function scoreBye() {
 
 function openNoBallModal() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver ||
+    match.waitingForBatter
+  ) {
     return;
   }
 
 
   selectedNoBallRuns = 0;
+
+
+  selectNoBallRuns(0);
 
 
   document
@@ -1815,17 +1932,21 @@ function closeNoBallModal() {
 
 function selectNoBallRuns(runs) {
 
-  selectedNoBallRuns = runs;
+  selectedNoBallRuns =
+    runs;
 
 
   document
-    .querySelectorAll("[data-nbruns]")
+    .querySelectorAll(
+      "[data-nbruns]"
+    )
     .forEach(button => {
 
       button.classList.toggle(
         "active",
-        Number(button.dataset.nbruns)
-        === runs
+        Number(
+          button.dataset.nbruns
+        ) === runs
       );
 
     });
@@ -1834,7 +1955,11 @@ function selectNoBallRuns(runs) {
 
 function confirmNoBall() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver ||
+    !match.striker
+  ) {
     return;
   }
 
@@ -1847,21 +1972,26 @@ function confirmNoBall() {
     selectedNoBallRuns;
 
 
-  // Penalty
+  /*
+    No-ball penalty
+  */
+
   batting.score++;
 
   batting.extras.noBalls++;
 
 
-  if (match.bowler) {
-
-    match.bowler.bowlerRuns =
-      (match.bowler.bowlerRuns || 0)
-      + 1;
-  }
+  addBowlerRuns(1);
 
 
-  // Bat runs
+  /*
+    Runs from bat.
+    These count to batter score.
+
+    No-ball does NOT count as
+    batter ball faced.
+  */
+
   if (runs > 0) {
 
     match.striker.runs += runs;
@@ -1877,12 +2007,13 @@ function confirmNoBall() {
     }
 
 
-    if (match.bowler) {
-
-      match.bowler.bowlerRuns += runs;
-    }
+    addBowlerRuns(runs);
   }
 
+
+  /*
+    Odd completed runs change strike.
+  */
 
   if (
     runs % 2 === 1 &&
@@ -1908,12 +2039,19 @@ function confirmNoBall() {
 
 function openWideModal() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver ||
+    match.waitingForBatter
+  ) {
     return;
   }
 
 
   selectedWideRuns = 1;
+
+
+  selectWideRuns(1);
 
 
   document
@@ -1932,17 +2070,21 @@ function closeWideModal() {
 
 function selectWideRuns(runs) {
 
-  selectedWideRuns = runs;
+  selectedWideRuns =
+    runs;
 
 
   document
-    .querySelectorAll("[data-wideruns]")
+    .querySelectorAll(
+      "[data-wideruns]"
+    )
     .forEach(button => {
 
       button.classList.toggle(
         "active",
-        Number(button.dataset.wideruns)
-        === runs
+        Number(
+          button.dataset.wideruns
+        ) === runs
       );
 
     });
@@ -1951,7 +2093,10 @@ function selectWideRuns(runs) {
 
 function confirmWide() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver
+  ) {
     return;
   }
 
@@ -1969,16 +2114,13 @@ function confirmWide() {
   batting.extras.wides += runs;
 
 
-  if (match.bowler) {
-
-    match.bowler.bowlerRuns =
-      (match.bowler.bowlerRuns || 0)
-      + runs;
-  }
+  addBowlerRuns(runs);
 
 
-  // Odd wide runs change strike,
-  // but a single batter never changes.
+  /*
+    Wide is not a legal ball.
+  */
+
   if (
     runs % 2 === 1 &&
     !isSingleBatterMode()
@@ -1998,12 +2140,16 @@ function confirmWide() {
 
 
 /* ==================================================
-   WICKET
+   WICKET MODAL
 ================================================== */
 
 function openWicketModal() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver ||
+    match.waitingForBatter
+  ) {
     return;
   }
 
@@ -2011,14 +2157,24 @@ function openWicketModal() {
   selectedRunOutBatter =
     "striker";
 
+
   selectedRunOutRuns =
     0;
+
 
   selectedRunOutBallType =
     "normal";
 
 
-  updateRunOutButtons();
+  selectRunOutBatter(
+    "striker"
+  );
+
+  selectRunOutRuns(0);
+
+  selectRunOutBallType(
+    "normal"
+  );
 
 
   document
@@ -2037,6 +2193,11 @@ function closeRunOutModal() {
 
 function selectRunOutBatter(which) {
 
+  /*
+    In single-batter mode there is
+    no non-striker.
+  */
+
   if (
     isSingleBatterMode() &&
     which === "nonstriker"
@@ -2049,7 +2210,33 @@ function selectRunOutBatter(which) {
     which;
 
 
-  updateRunOutButtons();
+  document
+    .querySelectorAll(
+      "[data-dismissed]"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.dismissed
+        === which
+      );
+
+
+      if (
+        isSingleBatterMode() &&
+        button.dataset.dismissed
+        === "nonstriker"
+      ) {
+
+        button.disabled = true;
+
+      } else {
+
+        button.disabled = false;
+      }
+
+    });
 }
 
 
@@ -2060,13 +2247,16 @@ function selectRunOutRuns(runs) {
 
 
   document
-    .querySelectorAll("[data-runs]")
+    .querySelectorAll(
+      "[data-runs]"
+    )
     .forEach(button => {
 
       button.classList.toggle(
         "active",
-        Number(button.dataset.runs)
-        === runs
+        Number(
+          button.dataset.runs
+        ) === runs
       );
 
     });
@@ -2080,7 +2270,9 @@ function selectRunOutBallType(type) {
 
 
   document
-    .querySelectorAll("[data-balltype]")
+    .querySelectorAll(
+      "[data-balltype]"
+    )
     .forEach(button => {
 
       button.classList.toggle(
@@ -2093,45 +2285,16 @@ function selectRunOutBallType(type) {
 }
 
 
-function updateRunOutButtons() {
-
-  document
-    .querySelectorAll("[data-dismissed]")
-    .forEach(button => {
-
-      const selected =
-        button.dataset.dismissed
-        === selectedRunOutBatter;
-
-
-      button.classList.toggle(
-        "active",
-        selected
-      );
-
-
-      if (
-        isSingleBatterMode() &&
-        button.dataset.dismissed
-        === "nonstriker"
-      ) {
-
-        button.disabled = true;
-        button.style.opacity = ".4";
-
-      } else {
-
-        button.disabled = false;
-        button.style.opacity = "1";
-      }
-
-    });
-}
-
+/* ==================================================
+   CONFIRM RUN OUT
+================================================== */
 
 function confirmRunOut() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver
+  ) {
     return;
   }
 
@@ -2155,12 +2318,33 @@ function confirmRunOut() {
     selectedRunOutRuns;
 
 
+  /*
+    Completed runs are added
+    to team total.
+  */
+
   batting.score += runs;
 
 
+  /*
+    Batter gets completed bat runs.
+  */
+
   dismissed.runs += runs;
 
-  dismissed.balls++;
+
+  /*
+    Normal ball counts as a ball faced.
+    No-ball does NOT.
+  */
+
+  if (
+    selectedRunOutBallType ===
+    "normal"
+  ) {
+
+    dismissed.balls++;
+  }
 
 
   if (runs === 4) {
@@ -2173,73 +2357,74 @@ function confirmRunOut() {
   }
 
 
-  if (selectedRunOutBallType === "noball") {
+  /*
+    No-ball penalty
+  */
+
+  if (
+    selectedRunOutBallType ===
+    "noball"
+  ) {
 
     batting.score++;
 
     batting.extras.noBalls++;
 
-
-    if (match.bowler) {
-
-      match.bowler.bowlerRuns =
-        (match.bowler.bowlerRuns || 0)
-        + runs
-        + 1;
-    }
-
+    addBowlerRuns(
+      runs + 1
+    );
 
   } else {
 
-    match.legalBalls++;
+    addBowlerRuns(runs);
 
-
-    if (match.bowler) {
-
-      match.bowler.bowlerRuns =
-        (match.bowler.bowlerRuns || 0)
-        + runs;
-
-      match.bowler.bowlerBalls =
-        (match.bowler.bowlerBalls || 0)
-        + 1;
-    }
+    addBowlerLegalBall();
   }
 
+
+  /*
+    Mark batter OUT.
+  */
 
   dismissed.out = true;
 
   dismissed.active = false;
 
+  dismissed.dismissal =
+    "Run Out";
+
 
   batting.wickets++;
 
 
+  /*
+    Bowler wicket gets credited
+    for normal run out? In cricket,
+    run out is NOT a bowler wicket.
+  */
+
   closeRunOutModal();
 
 
-  handleAfterWicket(
-    dismissed
-  );
+  /*
+    Work out strike/end position
+    before bringing in new batter.
+  */
+
+  const dismissedWasStriker =
+    dismissed === match.striker;
 
 
-  checkOver();
-
-  checkTarget();
-
-  updateUI();
-}
+  const otherBatter =
+    dismissedWasStriker
+      ? match.nonStriker
+      : match.striker;
 
 
-/* ==================================================
-   AFTER WICKET
-================================================== */
-
-function handleAfterWicket(dismissed) {
-
-  const batting =
-    getBattingTeam();
-
+  /*
+    Last wicket:
+    one player remains and can bat alone.
+  */
 
   const remaining =
     batting.players.filter(
@@ -2247,8 +2432,11 @@ function handleAfterWicket(dismissed) {
     );
 
 
-  // No players left
   if (remaining.length === 0) {
+
+    match.striker = null;
+
+    match.nonStriker = null;
 
     endInnings();
 
@@ -2256,10 +2444,28 @@ function handleAfterWicket(dismissed) {
   }
 
 
-  // ⭐ SINGLE BATTER MODE
   if (remaining.length === 1) {
 
-    enterSingleBatterMode();
+    match.striker =
+      remaining[0];
+
+    match.nonStriker =
+      null;
+
+
+    remaining[0].active = true;
+
+
+    if (
+      selectedRunOutBallType ===
+      "normal"
+    ) {
+
+      finishLegalBall();
+    }
+
+
+    checkTarget();
 
     updateUI();
 
@@ -2268,27 +2474,74 @@ function handleAfterWicket(dismissed) {
 
 
   /*
-    Normal case.
+    Normal case:
+    If striker was dismissed,
+    incoming player takes striker
+    position.
 
-    We intentionally do NOT use a
-    browser alert/prompt.
-
-    Instead open the proper
-    selection modal.
+    If non-striker was dismissed,
+    incoming player takes
+    non-striker position.
   */
 
+  if (dismissedWasStriker) {
+
+    match.striker = null;
+
+  } else {
+
+    match.nonStriker = null;
+  }
+
+
+  /*
+    Completed odd runs can change
+    the surviving batter's end.
+  */
+
+  if (
+    runs % 2 === 1
+  ) {
+
+    if (
+      match.striker &&
+      match.nonStriker
+    ) {
+
+      swapBatters();
+    }
+  }
+
+
+  if (
+    selectedRunOutBallType ===
+    "normal"
+  ) {
+
+    finishLegalBall();
+  }
+
+
+  match.waitingForBatter = true;
+
+
   openBatterModal(
-    dismissed === match.striker
+    dismissedWasStriker
   );
+
+
+  checkTarget();
+
+  updateUI();
 }
 
 
 /* ==================================================
-   NEW BATTER SELECTION
+   NEW BATTER MODAL
 ================================================== */
 
 function openBatterModal(
-  strikerWasDismissed
+  strikerDismissed
 ) {
 
   const batting =
@@ -2316,7 +2569,9 @@ function openBatterModal(
   available.forEach(player => {
 
     const button =
-      document.createElement("button");
+      document.createElement(
+        "button"
+      );
 
 
     button.className =
@@ -2332,7 +2587,9 @@ function openBatterModal(
       player.active = true;
 
 
-      if (strikerWasDismissed) {
+      if (
+        strikerDismissed
+      ) {
 
         match.striker =
           player;
@@ -2344,19 +2601,26 @@ function openBatterModal(
       }
 
 
+      match.waitingForBatter =
+        false;
+
+
       closeBatterModal();
 
       updateUI();
     };
 
 
-    list.appendChild(button);
-
+    list.appendChild(
+      button
+    );
   });
 
 
   document
-    .getElementById("batterModal")
+    .getElementById(
+      "batterModal"
+    )
     .classList.add("show");
 }
 
@@ -2364,18 +2628,40 @@ function openBatterModal(
 function closeBatterModal() {
 
   document
-    .getElementById("batterModal")
+    .getElementById(
+      "batterModal"
+    )
     .classList.remove("show");
+
+
+  /*
+    Do not leave match permanently
+    locked if user closes the modal.
+  */
+
+  if (
+    match &&
+    match.waitingForBatter
+  ) {
+
+    /*
+      Re-open selection rather than
+      allowing scoring without a batter.
+    */
+  }
 }
 
 
 /* ==================================================
-   BOWLER SELECTION
+   BOWLER MODAL
 ================================================== */
 
 function openBowlerModal() {
 
-  if (!match || match.matchOver) {
+  if (
+    !match ||
+    match.matchOver
+  ) {
     return;
   }
 
@@ -2393,51 +2679,62 @@ function openBowlerModal() {
     getBowlingTeam();
 
 
-  bowling.players.forEach(player => {
+  bowling.players.forEach(
+    player => {
 
-    const button =
-      document.createElement("button");
+      const button =
+        document.createElement(
+          "button"
+        );
 
 
-    button.className =
-      "selection-btn";
+      button.className =
+        "selection-btn";
 
 
-    if (player === match.bowler) {
+      if (
+        player === match.bowler
+      ) {
 
-      button.classList.add(
-        "current"
+        button.classList.add(
+          "current"
+        );
+      }
+
+
+      button.textContent =
+        player.name +
+        (
+          player === match.bowler
+            ? " ✓ Current"
+            : ""
+        );
+
+
+      button.onclick = () => {
+
+        match.bowler =
+          player;
+
+
+        closeBowlerModal();
+
+        updateUI();
+      };
+
+
+      list.appendChild(
+        button
       );
+
     }
-
-
-    button.innerHTML = `
-      ${player.name}
-      ${player === match.bowler
-        ? " ✓ Current"
-        : ""}
-    `;
-
-
-    button.onclick = () => {
-
-      match.bowler =
-        player;
-
-
-      closeBowlerModal();
-
-      updateUI();
-    };
-
-
-    list.appendChild(button);
-
-  });
+  );
 
 
   document
-    .getElementById("bowlerModal")
+    .getElementById(
+      "bowlerModal"
+    )
     .classList.add("show");
 }
 
@@ -2445,70 +2742,10 @@ function openBowlerModal() {
 function closeBowlerModal() {
 
   document
-    .getElementById("bowlerModal")
+    .getElementById(
+      "bowlerModal"
+    )
     .classList.remove("show");
-}
-
-
-/* ==================================================
-   OVER
-================================================== */
-
-function checkOver() {
-
-  if (
-    match.legalBalls >=
-    match.maxOvers * 6
-  ) {
-
-    endInnings();
-
-    return;
-  }
-
-
-  if (
-    match.legalBalls > 0 &&
-    match.legalBalls % 6 === 0
-  ) {
-
-    if (
-      !isSingleBatterMode()
-    ) {
-
-      swapBatters();
-    }
-
-
-    // Instead of automatically
-    // choosing a bowler, open the
-    // proper selection modal.
-    openBowlerModal();
-  }
-}
-
-
-/* ==================================================
-   STRIKE
-================================================== */
-
-function swapBatters() {
-
-  if (isSingleBatterMode()) {
-    return;
-  }
-
-
-  const temp =
-    match.striker;
-
-
-  match.striker =
-    match.nonStriker;
-
-
-  match.nonStriker =
-    temp;
 }
 
 
@@ -2516,9 +2753,20 @@ function swapBatters() {
    TARGET
 ================================================== */
 
+function getTarget() {
+
+  return (
+    match.teams[0].score + 1
+  );
+}
+
+
 function checkTarget() {
 
-  if (match.innings !== 2) {
+  if (
+    !match ||
+    match.innings !== 2
+  ) {
     return;
   }
 
@@ -2531,13 +2779,17 @@ function checkTarget() {
     getTarget();
 
 
-  if (batting.score >= target) {
+  if (
+    batting.score >= target
+  ) {
 
     match.matchOver = true;
 
 
     document
-      .getElementById("inningsMessage")
+      .getElementById(
+        "inningsMessage"
+      )
       .innerHTML = `
         <div class="innings-message">
           🏆 ${batting.name}
@@ -2552,21 +2804,23 @@ function checkTarget() {
    INNINGS
 ================================================== */
 
-function getTarget() {
-
-  return (
-    match.teams[0].score + 1
-  );
-}
-
-
 function endInnings() {
 
-  if (match.innings === 1) {
+  if (
+    !match ||
+    match.matchOver
+  ) {
+    return;
+  }
 
-    match.teams[1].target =
-      getTarget();
 
+  /*
+    First innings finished.
+  */
+
+  if (
+    match.innings === 1
+  ) {
 
     match.innings = 2;
 
@@ -2576,6 +2830,8 @@ function endInnings() {
 
     match.legalBalls = 0;
 
+    match.waitingForBatter = false;
+
 
     const batting =
       getBattingTeam();
@@ -2583,6 +2839,7 @@ function endInnings() {
 
     match.striker =
       batting.players[0];
+
 
     match.nonStriker =
       batting.players[1];
@@ -2600,7 +2857,9 @@ function endInnings() {
 
 
     document
-      .getElementById("inningsMessage")
+      .getElementById(
+        "inningsMessage"
+      )
       .innerHTML = `
         <div class="innings-message">
           🏏 Second Innings —
@@ -2615,6 +2874,10 @@ function endInnings() {
     return;
   }
 
+
+  /*
+    Second innings finished.
+  */
 
   match.matchOver = true;
 
@@ -2645,8 +2908,8 @@ function endInnings() {
   ) {
 
     const wicketsRemaining =
-      teamB.players.length
-      - teamB.wickets;
+      teamB.players.length -
+      teamB.wickets;
 
 
     result =
@@ -2662,7 +2925,9 @@ function endInnings() {
 
 
   document
-    .getElementById("inningsMessage")
+    .getElementById(
+      "inningsMessage"
+    )
     .innerHTML = `
       <div class="innings-message">
         🏆 ${result}
@@ -2675,7 +2940,7 @@ function endInnings() {
 
 
 /* ==================================================
-   UI UPDATE
+   UPDATE UI
 ================================================== */
 
 function updateUI() {
@@ -2690,37 +2955,37 @@ function updateUI() {
 
 
   document
-    .getElementById("battingTeamName")
+    .getElementById(
+      "battingTeamName"
+    )
     .textContent =
       batting.name;
 
 
   document
-    .getElementById("teamScore")
+    .getElementById(
+      "teamScore"
+    )
     .textContent =
       batting.score;
 
 
   document
-    .getElementById("teamWickets")
+    .getElementById(
+      "teamWickets"
+    )
     .textContent =
       batting.wickets;
 
 
-  const overs =
-    Math.floor(
-      match.legalBalls / 6
-    )
-    + "."
-    + (
-      match.legalBalls % 6
-    );
-
-
   document
-    .getElementById("oversDisplay")
+    .getElementById(
+      "oversDisplay"
+    )
     .textContent =
-      overs;
+      `${Math.floor(
+        match.legalBalls / 6
+      )}.${match.legalBalls % 6}`;
 
 
   const targetBox =
@@ -2729,7 +2994,9 @@ function updateUI() {
     );
 
 
-  if (match.innings === 2) {
+  if (
+    match.innings === 2
+  ) {
 
     targetBox.classList.remove(
       "hidden"
@@ -2737,7 +3004,9 @@ function updateUI() {
 
 
     document
-      .getElementById("targetScore")
+      .getElementById(
+        "targetScore"
+      )
       .textContent =
         getTarget();
 
@@ -2767,47 +3036,41 @@ function updateUI() {
 
 function updateBatters() {
 
-  const strikerName =
-    document.getElementById(
-      "strikerName"
-    );
-
-
-  const strikerScore =
-    document.getElementById(
-      "strikerScore"
-    );
-
-
-  const nonStrikerName =
-    document.getElementById(
-      "nonStrikerName"
-    );
-
-
-  const nonStrikerScore =
-    document.getElementById(
-      "nonStrikerScore"
-    );
-
-
   if (match.striker) {
 
-    strikerName.textContent =
-      "★ " + match.striker.name;
+    document
+      .getElementById(
+        "strikerName"
+      )
+      .textContent =
+        "★ " +
+        match.striker.name;
 
 
-    strikerScore.textContent =
-      `${match.striker.runs}
-       (${match.striker.balls})`;
+    document
+      .getElementById(
+        "strikerScore"
+      )
+      .textContent =
+        `${match.striker.runs}
+         (${match.striker.balls})`;
 
   } else {
 
-    strikerName.textContent =
-      "Striker";
+    document
+      .getElementById(
+        "strikerName"
+      )
+      .textContent =
+        "Striker";
 
-    strikerScore.textContent =
-      "0 (0)";
+
+    document
+      .getElementById(
+        "strikerScore"
+      )
+      .textContent =
+        "0 (0)";
   }
 
 
@@ -2816,25 +3079,45 @@ function updateBatters() {
     !isSingleBatterMode()
   ) {
 
-    nonStrikerName.textContent =
-      match.nonStriker.name;
+    document
+      .getElementById(
+        "nonStrikerName"
+      )
+      .textContent =
+        match.nonStriker.name;
 
 
-    nonStrikerScore.textContent =
-      `${match.nonStriker.runs}
-       (${match.nonStriker.balls})`;
+    document
+      .getElementById(
+        "nonStrikerScore"
+      )
+      .textContent =
+        `${match.nonStriker.runs}
+         (${match.nonStriker.balls})`;
 
   } else {
 
-    nonStrikerName.textContent =
-      "Non-Striker";
+    document
+      .getElementById(
+        "nonStrikerName"
+      )
+      .textContent =
+        "Non-Striker";
 
 
-    nonStrikerScore.textContent =
-      "—";
+    document
+      .getElementById(
+        "nonStrikerScore"
+      )
+      .textContent =
+        "—";
   }
 }
 
+
+/* ==================================================
+   SINGLE BATTER
+================================================== */
 
 function updateSingleBatterUI() {
 
@@ -2874,8 +3157,10 @@ function updateBowler() {
     name.textContent =
       "Bowler";
 
+
     figures.textContent =
       "0.0 - 0 - 0 - 0";
+
 
     return;
   }
@@ -2898,7 +3183,9 @@ function updateBowler() {
 
 
   figures.textContent =
-    `${Math.floor(balls / 6)}.${balls % 6}
+    `${Math.floor(
+      balls / 6
+    )}.${balls % 6}
      - ${runs}
      - 0
      - ${wickets}`;
@@ -2906,7 +3193,7 @@ function updateBowler() {
 
 
 /* ==================================================
-   EXTRAS UI
+   EXTRAS
 ================================================== */
 
 function updateExtras() {
@@ -2928,25 +3215,33 @@ function updateExtras() {
 
 
   document
-    .getElementById("extraNoBalls")
+    .getElementById(
+      "extraNoBalls"
+    )
     .textContent =
       noBalls;
 
 
   document
-    .getElementById("extraWides")
+    .getElementById(
+      "extraWides"
+    )
     .textContent =
       wides;
 
 
   document
-    .getElementById("extraByes")
+    .getElementById(
+      "extraByes"
+    )
     .textContent =
       byes;
 
 
   document
-    .getElementById("extraTotal")
+    .getElementById(
+      "extraTotal"
+    )
     .textContent =
       noBalls +
       wides +
@@ -2973,6 +3268,34 @@ function updateScorecard() {
   container.innerHTML = "";
 
 
+  const summary =
+    document.createElement(
+      "div"
+    );
+
+
+  summary.className =
+    "scorecard-summary";
+
+
+  summary.innerHTML = `
+    <b>
+      ${batting.name}
+    </b>
+    —
+    ${batting.score}/${batting.wickets}
+    in
+    ${Math.floor(
+      match.legalBalls / 6
+    )}.${match.legalBalls % 6}
+  `;
+
+
+  container.appendChild(
+    summary
+  );
+
+
   batting.players.forEach(
     player => {
 
@@ -2993,7 +3316,7 @@ function updateScorecard() {
 
         status =
           `<span class="player-status out">
-            OUT
+            ${player.dismissal || "OUT"}
           </span>`;
 
       } else {
@@ -3012,7 +3335,8 @@ function updateScorecard() {
         player === match.striker
       ) {
 
-        position = " ⭐";
+        position =
+          " ⭐";
       }
 
 
@@ -3020,7 +3344,8 @@ function updateScorecard() {
         player === match.nonStriker
       ) {
 
-        position = " •";
+        position =
+          " •";
       }
 
 
@@ -3031,6 +3356,7 @@ function updateScorecard() {
         </span>
 
         <span>
+
           <b>
             ${player.runs}
           </b>
@@ -3038,15 +3364,14 @@ function updateScorecard() {
           (${player.balls})
 
           ${status}
-        </span>
 
+        </span>
       `;
 
 
       container.appendChild(
         row
       );
-
     }
   );
 }
@@ -3057,11 +3382,6 @@ function updateScorecard() {
 ================================================== */
 
 function openNewMatchModal() {
-
-  if (!match) {
-    return;
-  }
-
 
   document
     .getElementById(
@@ -3086,79 +3406,124 @@ function newMatch() {
   match = null;
 
 
-  closeNewMatchModal();
+  closeAllModals();
 
 
   document
-    .getElementById("setupCard")
+    .getElementById(
+      "setupCard"
+    )
     .classList.remove("hidden");
 
 
   document
-    .getElementById("matchArea")
+    .getElementById(
+      "matchArea"
+    )
     .classList.add("hidden");
 
 
   document
-    .getElementById("squadSection")
-    .style.display = "none";
+    .getElementById(
+      "squadSection"
+    ).style.display = "none";
 
 
   document
-    .getElementById("startMatchArea")
-    .style.display = "none";
+    .getElementById(
+      "startMatchArea"
+    ).style.display = "none";
 
 
   document
-    .getElementById("teamAInputs")
-    .innerHTML = "";
+    .getElementById(
+      "teamAInputs"
+    ).innerHTML = "";
 
 
   document
-    .getElementById("teamBInputs")
-    .innerHTML = "";
+    .getElementById(
+      "teamBInputs"
+    ).innerHTML = "";
 
 
   document
-    .getElementById("oversInput")
-    .value = "";
+    .getElementById(
+      "oversInput"
+    ).value = "";
 
 
   document
-    .getElementById("playersInput")
-    .value = "";
+    .getElementById(
+      "playersInput"
+    ).value = "";
 }
 
 
 /* ==================================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
+   CLOSE ALL MODALS
+================================================== */
+
+function closeAllModals() {
+
+  document
+    .querySelectorAll(".modal")
+    .forEach(
+      modal =>
+        modal.classList.remove(
+          "show"
+        )
+    );
+}
+
+
+/* ==================================================
+   CLICK OUTSIDE MODAL
 ================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
-  () => {
+  function() {
 
     document
       .querySelectorAll(".modal")
-      .forEach(modal => {
+      .forEach(
+        modal => {
 
-        modal.addEventListener(
-          "click",
-          event => {
+          modal.addEventListener(
+            "click",
+            function(event) {
 
-            if (
-              event.target === modal
-            ) {
+              if (
+                event.target === modal
+              ) {
 
-              modal.classList.remove(
-                "show"
-              );
+                /*
+                  Do not close batter
+                  selection while match
+                  is waiting for a batter.
+                */
+
+                if (
+                  modal.id ===
+                  "batterModal" &&
+                  match &&
+                  match.waitingForBatter
+                ) {
+                  return;
+                }
+
+
+                modal.classList.remove(
+                  "show"
+                );
+              }
+
             }
+          );
 
-          }
-        );
-
-      });
+        }
+      );
 
   }
 );
