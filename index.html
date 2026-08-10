@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,14 +19,16 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+
   background:
     linear-gradient(
       135deg,
-      #e0f2fe 0%,
-      #f0fdf4 45%,
-      #f8fafc 100%
+      #e8f3ef 0%,
+      #f5f1e8 50%,
+      #f8faf9 100%
     );
-  color: #172033;
+
+  color: #24332f;
   min-height: 100vh;
 }
 
@@ -38,7 +39,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #0f5132;
+  color: #286052;
   margin: 0 0 22px;
 }
 
@@ -54,14 +55,14 @@ h4 {
 ===================================================== */
 
 .card {
-  background: #ffffff;
-  border: 1px solid #dbeafe;
+  background: #fffdf8;
+  border: 1px solid #d9e5df;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 18px;
 
   box-shadow:
-    0 8px 25px rgba(15, 23, 42, .08);
+    0 8px 25px rgba(36, 51, 47, .08);
 }
 
 .hidden {
@@ -87,8 +88,8 @@ h4 {
 }
 
 .squad-box {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: #edf7f2;
+  border: 1px solid #c9ded5;
   padding: 16px;
   border-radius: 12px;
 }
@@ -96,7 +97,7 @@ h4 {
 label {
   display: block;
   font-weight: 700;
-  color: #334155;
+  color: #40524d;
 }
 
 input {
@@ -105,22 +106,22 @@ input {
   margin-top: 7px;
 
   border:
-    1px solid #cbd5e1;
+    1px solid #cbd9d4;
 
   border-radius: 9px;
 
-  background: #ffffff;
-  color: #172033;
+  background: #fffdf8;
+  color: #24332f;
 
   font-size: 16px;
   outline: none;
 }
 
 input:focus {
-  border-color: #16a34a;
+  border-color: #3f7f78;
 
   box-shadow:
-    0 0 0 3px rgba(22, 163, 74, .12);
+    0 0 0 3px rgba(63, 127, 120, .12);
 }
 
 .player-input {
@@ -128,7 +129,7 @@ input:focus {
 }
 
 .setup-note {
-  color: #64748b;
+  color: #71817c;
   font-size: 13px;
   margin-top: 8px;
 }
@@ -164,22 +165,22 @@ button:disabled {
 }
 
 .btn-start {
-  background: #16a34a;
+  background: #2f7d68;
   color: #ffffff;
 }
 
 .btn-start:hover {
   box-shadow:
-    0 5px 15px rgba(22, 163, 74, .25);
+    0 5px 15px rgba(47, 125, 104, .25);
 }
 
 .btn-ghost {
-  background: #e2e8f0;
-  color: #1e293b;
+  background: #e4ebe8;
+  color: #30423d;
 }
 
 .btn-danger {
-  background: #ef4444;
+  background: #d95c5c;
   color: #ffffff;
 }
 
@@ -201,10 +202,6 @@ button:disabled {
    TOTAL SCORE CARD
 ===================================================== */
 
-/*
-   CENTERED TOTAL SCORE
-*/
-
 .total-score-card {
   text-align: center;
 }
@@ -218,7 +215,7 @@ button:disabled {
 }
 
 .team-title {
-  color: #0f766e;
+  color: #39796c;
   font-size: 21px;
   font-weight: 800;
   margin-bottom: 7px;
@@ -228,19 +225,19 @@ button:disabled {
   font-size: 58px;
   line-height: 1;
   font-weight: 900;
-  color: #0f172a;
+  color: #263832;
 }
 
 .overs {
   margin-top: 8px;
-  color: #64748b;
+  color: #71817c;
   font-size: 17px;
   font-weight: 700;
 }
 
 .target {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #e8f0e8;
+  color: #39705c;
   padding: 12px 18px;
   border-radius: 10px;
   font-weight: 800;
@@ -251,8 +248,8 @@ button:disabled {
   padding: 13px;
   border-radius: 10px;
 
-  background: #dcfce7;
-  color: #166534;
+  background: #dff0e8;
+  color: #286052;
 
   font-weight: 800;
 }
@@ -263,7 +260,7 @@ button:disabled {
 ===================================================== */
 
 .section-title {
-  color: #0f766e;
+  color: #39796c;
   font-size: 19px;
   font-weight: 900;
   margin-bottom: 13px;
@@ -287,13 +284,13 @@ button:disabled {
 }
 
 .btn-run {
-  background: #2563eb;
+  background: #3f7f78;
   color: #ffffff;
   font-size: 18px;
 }
 
 .btn-dot {
-  background: #64748b;
+  background: #71827d;
 }
 
 .action-grid {
@@ -315,8 +312,8 @@ button:disabled {
 ===================================================== */
 
 .live-head {
-  background: #dbeafe;
-  color: #1e3a8a;
+  background: #e2f0eb;
+  color: #285b50;
 
   padding: 11px 14px;
 
@@ -336,19 +333,15 @@ button:disabled {
   padding: 14px 8px;
 
   border-bottom:
-    1px solid #e2e8f0;
+    1px solid #e1e8e5;
 }
-
-/*
-  Larger batter / bowler names
-*/
 
 #strikerName,
 #nonStrikerName,
 #bowlerName {
   font-size: 20px;
   font-weight: 800;
-  color: #172033;
+  color: #263832;
 }
 
 #strikerScore,
@@ -360,12 +353,12 @@ button:disabled {
 }
 
 .striker {
-  color: #16a34a !important;
+  color: #2f7d68 !important;
 }
 
 .single-batter-notice {
-  background: #fef3c7;
-  color: #92400e;
+  background: #f8edcc;
+  color: #8a681d;
 
   padding: 12px;
 
@@ -390,21 +383,21 @@ button:disabled {
 }
 
 .extra-item {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #f5f8f6;
+  border: 1px solid #dfe7e3;
 
   padding: 14px;
 
   border-radius: 9px;
 
   text-align: center;
-  color: #64748b;
+  color: #71817c;
 }
 
 .extra-item b {
   display: block;
 
-  color: #0f172a;
+  color: #263832;
 
   font-size: 23px;
   margin-top: 5px;
@@ -416,8 +409,8 @@ button:disabled {
 ===================================================== */
 
 .scorecard-summary {
-  background: #ecfdf5;
-  border: 1px solid #bbf7d0;
+  background: #eaf5ef;
+  border: 1px solid #c9ded5;
 
   padding: 13px;
 
@@ -425,7 +418,7 @@ button:disabled {
 
   margin-bottom: 10px;
 
-  color: #166534;
+  color: #286052;
 }
 
 .scorecard-player {
@@ -441,7 +434,7 @@ button:disabled {
   padding: 12px 7px;
 
   border-bottom:
-    1px solid #e2e8f0;
+    1px solid #e1e8e5;
 }
 
 .scorecard-player:last-child {
@@ -455,11 +448,11 @@ button:disabled {
 }
 
 .out {
-  color: #dc2626;
+  color: #c94c4c;
 }
 
 .not-out {
-  color: #16a34a;
+  color: #2f7d68;
 }
 
 
@@ -482,8 +475,8 @@ button:disabled {
 
   border-radius: 7px;
 
-  background: #eff6ff;
-  color: #1d4ed8;
+  background: #e6f1ee;
+  color: #39705c;
 
   font-weight: 800;
 
@@ -491,13 +484,13 @@ button:disabled {
 }
 
 .ball-chip.extra {
-  background: #fef3c7;
-  color: #92400e;
+  background: #f8edcc;
+  color: #8a681d;
 }
 
 .ball-chip.wicket {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: #f8dddd;
+  color: #b44747;
 }
 
 
@@ -519,7 +512,7 @@ button:disabled {
   padding: 15px;
 
   background:
-    rgba(15, 23, 42, .55);
+    rgba(36, 51, 47, .55);
 }
 
 .modal.show {
@@ -532,18 +525,18 @@ button:disabled {
 
   overflow-y: auto;
 
-  background: #ffffff;
+  background: #fffdf8;
 
   border-radius: 16px;
 
   padding: 21px;
 
   box-shadow:
-    0 20px 60px rgba(15, 23, 42, .25);
+    0 20px 60px rgba(36, 51, 47, .25);
 }
 
 .modal-box h3 {
-  color: #0f766e;
+  color: #39796c;
 }
 
 .modal-label {
@@ -551,7 +544,7 @@ button:disabled {
   margin-bottom: 9px;
 
   font-weight: 800;
-  color: #334155;
+  color: #40524d;
 }
 
 .option-row {
@@ -561,18 +554,18 @@ button:disabled {
 }
 
 .option-btn {
-  background: #e2e8f0;
-  color: #1e293b;
+  background: #e4ebe8;
+  color: #30423d;
 }
 
 .option-btn.active {
-  background: #2563eb;
+  background: #3f7f78;
   color: #ffffff;
 }
 
 .warning {
-  background: #fef3c7;
-  color: #92400e;
+  background: #f8edcc;
+  color: #8a681d;
 
   padding: 12px;
 
@@ -604,28 +597,37 @@ button:disabled {
   width: 100%;
   text-align: left;
 
-  background: #eff6ff;
-  color: #1e3a8a;
+  background: #eef6f2;
+  color: #285b50;
 
-  border: 1px solid #bfdbfe;
+  border: 1px solid #c9ded5;
 }
 
 .selection-btn.current {
-  background: #dcfce7;
-  color: #166534;
+  background: #dff0e8;
+  color: #286052;
 
-  border-color: #86efac;
+  border-color: #91c7b2;
+}
+
+.selection-btn:disabled {
+  background: #edf0ee;
+  color: #89938f;
+  border-color: #d8ddda;
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .opening-selected {
-  background: #dcfce7 !important;
-  color: #166534 !important;
+  background: #dff0e8 !important;
+  color: #286052 !important;
 
-  border-color: #22c55e !important;
+  border-color: #2f9b79 !important;
 }
 
 .small-info {
-  color: #64748b;
+  color: #71817c;
   font-size: 14px;
 }
 
@@ -635,13 +637,13 @@ button:disabled {
 ===================================================== */
 
 .undo-button {
-  background: #f97316;
+  background: #d77a43;
   color: #ffffff;
 }
 
 .undo-button:disabled {
-  background: #cbd5e1;
-  color: #64748b;
+  background: #cbd5d1;
+  color: #71817c;
 }
 
 
@@ -842,8 +844,6 @@ button:disabled {
 
   <div class="top-actions">
 
-    <!-- ONLY ONE UNDO -->
-
     <button
       id="undoButton"
       class="undo-button"
@@ -1040,8 +1040,6 @@ button:disabled {
 
     </div>
 
-
-    <!-- BALL TRACKING -->
 
     <div class="live-head">
       This Over
@@ -1740,7 +1738,8 @@ button:disabled {
 
     <div class="small-info">
 
-      Select the bowler for the next over.
+      Each bowler can bowl a maximum of
+      one completed over per match.
 
     </div>
 
@@ -1951,13 +1950,6 @@ function createPlayerInputs(
       "player-input";
 
 
-    /*
-      IMPORTANT:
-      value is empty.
-
-      Placeholder only.
-    */
-
     input.value = "";
 
 
@@ -2049,10 +2041,6 @@ function startMatch() {
 
     waitingForBatter: false,
 
-
-    /*
-      Current over tracking
-    */
 
     currentOverBalls: []
 
@@ -2179,6 +2167,13 @@ function createPlayer(name) {
     dismissal: "",
 
 
+    /*
+      Bowler tracking.
+
+      A bowler is allowed a maximum
+      of 6 legal balls = 1 completed over.
+    */
+
     bowlerBalls: 0,
 
     bowlerRuns: 0,
@@ -2206,6 +2201,23 @@ function getBowlingTeam() {
   return match.teams[
     match.bowlingTeam
   ];
+}
+
+
+/*
+  IMPORTANT:
+  A bowler who has completed 6 legal balls
+  has already bowled one complete over.
+
+  That bowler cannot be selected again.
+*/
+
+function hasBowledOneOver(player) {
+
+  return (
+    (player.bowlerBalls || 0) >= 6
+  );
+
 }
 
 
@@ -2275,10 +2287,6 @@ function renderOpeningPlayers() {
   batting.players.forEach(
     player => {
 
-      /*
-        STRIKER
-      */
-
       const strikerButton =
         document.createElement(
           "button"
@@ -2309,12 +2317,6 @@ function renderOpeningPlayers() {
           player;
 
 
-        /*
-          If same player had been
-          selected as non-striker,
-          clear it.
-        */
-
         if (
           openingNonStriker === player
         ) {
@@ -2333,10 +2335,6 @@ function renderOpeningPlayers() {
         strikerButton
       );
 
-
-      /*
-        NON-STRIKER
-      */
 
       const nonButton =
         document.createElement(
@@ -2455,22 +2453,6 @@ function closeOpeningModal() {
 
 function saveUndoSnapshot() {
 
-  /*
-    Deep clone the complete match.
-
-    This includes:
-    - score
-    - wickets
-    - batter scores
-    - bowler figures
-    - extras
-    - innings
-    - result
-    - striker
-    - non-striker
-    - current over
-  */
-
   undoSnapshot =
     JSON.parse(
       JSON.stringify(match)
@@ -2494,10 +2476,6 @@ function undoLastBall() {
   }
 
 
-  /*
-    Restore entire match state.
-  */
-
   match =
     JSON.parse(
       JSON.stringify(
@@ -2505,13 +2483,6 @@ function undoLastBall() {
       )
     );
 
-
-  /*
-    Important:
-    Clear the snapshot after one undo.
-
-    Therefore there is ONLY ONE undo.
-  */
 
   undoSnapshot = null;
 
@@ -2522,17 +2493,13 @@ function undoLastBall() {
   updateUndoButton();
 
 
-  /*
-    Rebuild everything from restored state.
-
-    This also removes a previous
-    match result if the winning ball
-    was undone.
-  */
-
   updateUI();
 }
 
+
+/* =====================================================
+   UNDO BUTTON
+===================================================== */
 
 function updateUndoButton() {
 
@@ -2569,10 +2536,6 @@ function scoreRuns(runs) {
     return;
   }
 
-
-  /*
-    Save BEFORE changing anything.
-  */
 
   saveUndoSnapshot();
 
@@ -2614,10 +2577,6 @@ function scoreRuns(runs) {
       : String(runs)
   );
 
-
-  /*
-    Odd runs change strike.
-  */
 
   if (
     runs % 2 === 1 &&
@@ -2699,10 +2658,6 @@ function finishLegalBall() {
       swapBatters();
     }
 
-
-    /*
-      Next over.
-    */
 
     match.currentOverBalls = [];
 
@@ -2911,10 +2866,6 @@ function confirmNoBall() {
   }
 
 
-  /*
-    SAVE BEFORE CHANGE
-  */
-
   saveUndoSnapshot();
 
 
@@ -2926,10 +2877,6 @@ function confirmNoBall() {
     selectedNoBallRuns;
 
 
-  /*
-    +1 penalty
-  */
-
   batting.score++;
 
   batting.extras.noBalls++;
@@ -2937,10 +2884,6 @@ function confirmNoBall() {
 
   addBowlerRuns(1);
 
-
-  /*
-    Bat runs
-  */
 
   if (runs > 0) {
 
@@ -2966,12 +2909,6 @@ function confirmNoBall() {
   }
 
 
-  /*
-    NO BALL does not count
-    as a legal delivery.
-  */
-
-
   const label =
     runs === 0
       ? "NB"
@@ -2983,11 +2920,6 @@ function confirmNoBall() {
     "extra"
   );
 
-
-  /*
-    Odd completed runs
-    change strike.
-  */
 
   if (
     runs % 2 === 1 &&
@@ -3047,18 +2979,6 @@ function closeWideModal() {
 }
 
 
-/*
-  selectedWideRuns means
-  ADDITIONAL runs beyond the
-  mandatory 1 wide penalty.
-
-  0 = WD = 1 total
-  1 = WD+1 = 2 total
-  2 = WD+2 = 3 total
-  3 = WD+3 = 4 total
-  4 = WD+4 = 5 total
-*/
-
 function selectWideRuns(runs) {
 
   selectedWideRuns =
@@ -3095,10 +3015,6 @@ function confirmWide() {
   }
 
 
-  /*
-    SAVE BEFORE CHANGE
-  */
-
   saveUndoSnapshot();
 
 
@@ -3125,15 +3041,6 @@ function confirmWide() {
   addBowlerRuns(total);
 
 
-  /*
-    Correct ball tracking.
-
-    WD
-    WD+1
-    WD+2
-    etc.
-  */
-
   const label =
     additional === 0
       ? "WD"
@@ -3146,14 +3053,6 @@ function confirmWide() {
   );
 
 
-  /*
-    Odd number of completed
-    runs changes strike.
-
-    For WD+2 = 3 total runs,
-    strike changes.
-  */
-
   if (
     total % 2 === 1 &&
     !isSingleBatterMode()
@@ -3161,11 +3060,6 @@ function confirmWide() {
 
     swapBatters();
   }
-
-
-  /*
-    Wide is NOT legal ball.
-  */
 
 
   closeWideModal();
@@ -3357,10 +3251,6 @@ function confirmRunOut() {
   }
 
 
-  /*
-    SAVE BEFORE CHANGE
-  */
-
   saveUndoSnapshot();
 
 
@@ -3386,17 +3276,9 @@ function confirmRunOut() {
     selectedRunOutRuns;
 
 
-  /*
-    Team runs
-  */
-
   batting.score +=
     runs;
 
-
-  /*
-    Batter completed runs
-  */
 
   dismissed.runs +=
     runs;
@@ -3420,10 +3302,6 @@ function confirmRunOut() {
     dismissed.sixes++;
   }
 
-
-  /*
-    NO BALL RUN OUT
-  */
 
   if (
     selectedRunOutBallType ===
@@ -3450,10 +3328,6 @@ function confirmRunOut() {
   }
 
 
-  /*
-    OUT
-  */
-
   dismissed.out =
     true;
 
@@ -3469,18 +3343,9 @@ function confirmRunOut() {
   batting.wickets++;
 
 
-  /*
-    Run out is NOT a bowler wicket.
-  */
-
-
   const dismissedWasStriker =
     dismissed === match.striker;
 
-
-  /*
-    BALL HISTORY
-  */
 
   let label =
     runs === 0
@@ -3509,17 +3374,9 @@ function confirmRunOut() {
   closeRunOutModal();
 
 
-  /*
-    Remaining batters
-  */
-
   const remaining =
     getRemainingPlayers();
 
-
-  /*
-    ALL OUT
-  */
 
   if (
     remaining.length === 0
@@ -3547,10 +3404,6 @@ function confirmRunOut() {
     return;
   }
 
-
-  /*
-    LAST WICKET / SINGLE BATTER
-  */
 
   if (
     remaining.length === 1
@@ -3587,10 +3440,6 @@ function confirmRunOut() {
   }
 
 
-  /*
-    Normal case.
-  */
-
   if (
     dismissedWasStriker
   ) {
@@ -3604,11 +3453,6 @@ function confirmRunOut() {
       null;
   }
 
-
-  /*
-    Odd runs change surviving
-    batter's end.
-  */
 
   if (
     runs % 2 === 1
@@ -3744,11 +3588,6 @@ function openBatterModal(
 
 function closeBatterModal() {
 
-  /*
-    Don't allow scoring to continue
-    without selecting the replacement.
-  */
-
   if (
     match &&
     match.waitingForBatter
@@ -3805,36 +3644,63 @@ function openBowlerModal() {
         "selection-btn";
 
 
+      /*
+        IMPORTANT:
+        Once a bowler has completed
+        6 legal balls, they cannot
+        bowl another over.
+      */
+
+      const alreadyBowled =
+        hasBowledOneOver(player);
+
+
       if (
-        player === match.bowler
+        alreadyBowled
       ) {
 
-        button.classList.add(
-          "current"
-        );
-      }
+        button.disabled =
+          true;
 
 
-      button.textContent =
-        player.name +
-        (
+        button.textContent =
+          player.name +
+          " ✓ 1 Over Completed";
+
+      } else {
+
+        if (
           player === match.bowler
-            ? " ✓ Current"
-            : ""
-        );
+        ) {
+
+          button.classList.add(
+            "current"
+          );
+        }
 
 
-      button.onclick = () => {
+        button.textContent =
+          player.name +
+          (
+            player === match.bowler
+              ? " ✓ Current"
+              : ""
+          );
 
-        match.bowler =
-          player;
+
+        button.onclick = () => {
+
+          match.bowler =
+            player;
 
 
-        closeBowlerModal();
+          closeBowlerModal();
 
 
-        updateUI();
-      };
+          updateUI();
+        };
+
+      }
 
 
       list.appendChild(
@@ -3869,10 +3735,6 @@ function closeBowlerModal() {
 
 function getTarget() {
 
-  /*
-    Team A score + 1
-  */
-
   return (
     match.teams[0].score + 1
   );
@@ -3880,15 +3742,6 @@ function getTarget() {
 
 
 function checkTarget() {
-
-  /*
-    IMPORTANT:
-    Always clear old result first.
-
-    This is what prevents the old
-    "Team won" message remaining
-    after Undo.
-  */
 
   if (!match) {
     return;
@@ -3938,12 +3791,6 @@ function checkTarget() {
   }
 
 
-  /*
-    Score is below target,
-    therefore there must NOT be
-    a winning message.
-  */
-
   if (
     !match.matchOver
   ) {
@@ -3970,10 +3817,6 @@ function endInnings() {
     return;
   }
 
-
-  /*
-    FIRST INNINGS
-  */
 
   if (
     match.innings === 1
@@ -4038,11 +3881,6 @@ function endInnings() {
       `;
 
 
-    /*
-      Select opening batters
-      for second innings too.
-    */
-
     openOpeningBattersModal();
 
 
@@ -4052,10 +3890,6 @@ function endInnings() {
     return;
   }
 
-
-  /*
-    SECOND INNINGS
-  */
 
   const teamA =
     match.teams[0];
@@ -4142,10 +3976,6 @@ function updateUI() {
     getBattingTeam();
 
 
-  /*
-    SCORE
-  */
-
   document
     .getElementById(
       "battingTeamName"
@@ -4181,10 +4011,6 @@ function updateUI() {
       )}.${match.legalBalls % 6}`;
 
 
-  /*
-    TARGET
-  */
-
   const targetBox =
     document.getElementById(
       "targetBox"
@@ -4214,11 +4040,6 @@ function updateUI() {
     );
   }
 
-
-  /*
-    If match is not over,
-    make sure stale result is gone.
-  */
 
   if (
     !match.matchOver &&
@@ -4758,11 +4579,6 @@ document.addEventListener(
               }
 
 
-              /*
-                Opening batter selection
-                must be completed.
-              */
-
               if (
                 modal.id ===
                 "openingModal"
@@ -4770,11 +4586,6 @@ document.addEventListener(
                 return;
               }
 
-
-              /*
-                New batter selection
-                must be completed.
-              */
 
               if (
                 modal.id ===
@@ -4803,4 +4614,3 @@ document.addEventListener(
 
 </body>
 </html>
-```
